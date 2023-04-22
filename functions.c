@@ -88,27 +88,33 @@ int print_percent(va_list args)
 /**
  * print_d - prints decimal (base 10) number
  * @args: argument containing the integer to print
- * Return: number of characters number of characters printed
+ * Return: the number of characters printed
  */
 
 int print_d(va_list args)
 {
-	int d;
+	int d, len;
+	char buffer[20];
 
 	d = va_arg(args, int);
-	return (printf("%d", d));
+	len = sprintf(buffer, "%d", d);
+	write(1, buffer, len);
+	return (len);
 }
 
 /**
  * print_i - prints an integer
  * @args: integer  argument
- * Return: number of characters the number of characters printed
+ * Return: the number of characters printed
  */
 
 int print_i(va_list args)
 {
-	int i;
+	int i, len;
+	char buffer[20];
 
 	i = va_arg(args, int);
-	return (printf("%i", i));
+	len = sprintf(buffer, "%i", i);
+	write(1, buffer, len);
+	return (len);
 }
