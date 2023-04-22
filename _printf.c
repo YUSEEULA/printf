@@ -45,6 +45,8 @@ int _printf(const char *format, ...)
 					break;
 			}
 		}
+		write(1, &format[index], 1);
+		counter++;
 	}
 	va_end(args);
 	return (counter);
