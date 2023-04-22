@@ -12,7 +12,7 @@
 int (*get_function(char x))(va_list)
 {
 	int i = 0;
-	specifier arr[] = {
+	spc arr[] = {
 		{"c", print_c},
 		{"s", print_s},
 		{"%", print_percent},
@@ -88,7 +88,7 @@ int print_percent(va_list args)
 /**
  * print_d - prints decimal (base 10) number
  * @args: argument containing the integer to print
- * Return: number of characters
+ * Return: number of characters number of characters printed
  */
 
 int print_d(va_list args)
@@ -102,7 +102,7 @@ int print_d(va_list args)
 /**
  * print_i - prints an integer
  * @args: integer  argument
- * Return: number of characters
+ * Return: number of characters the number of characters printed
  */
 
 int print_i(va_list args)
