@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  * get_function - look for the function
@@ -11,10 +12,9 @@
 int (*get_function(char x))(va_list)
 {
 	int i = 0;
-	specifier arr[] = {
+	spc arr[] = {
 		{"c", print_c},
 		{"s", print_s},
-		{"%", print_percent},
 		{NULL, NULL}
 	};
 	while (arr[i].valid)
@@ -37,7 +37,7 @@ int print_c(va_list args)
 	int c;
 
 	c = va_arg(args, int);
-	return (_putchar(c));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -57,27 +57,8 @@ int print_s(va_list args)
 		str = "(null)";
 	while (str[i] != '\0')
 	{
-		count += _putchar(str[i]);
+		count += write(1, &str[i], 1);
 		i++;
 	}
 	return (count);
-}
-
-/**
- * print_percent - pass the percent sing
- * @args: string  argument
- * Return: return the percent sing
- *
- */
-
-int print_percent(va_list args)
-{
-	char *str;
-
-	str = "%";
-	if (va_arg(args, int) == *str)
-	{
-		return (*str);
-	}
-	return (*str);
 }

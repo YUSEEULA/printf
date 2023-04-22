@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "main.h"
 #include <stddef.h>
+#include <unistd.h>
 
 /**
  * _printf - recreates the printf function
@@ -25,16 +26,21 @@ int _printf(const char *format, ...)
 		{
 			if (format[i] == '%')
 			{
-				m = get_func(format[i + 1]);
-				if (m)
-					count += m(args);
+				if (format[i + 1] == '%')
+					count += write(1, &format[i + 1], 1);
 				else
-					count = _putchar(format[i]) + _putchar(format[i + 1]);
+				{
+					m = get_function(format[i + 1]);
+					if (m)
+						count += m(args);
+					else
+						count += write(1, &format[i], 1) + write(1, &format[i + 1], 1);
+				}
 				i += 2;
 			}
 			else
 			{
-				count += _putchar(format[i]);
+				count += write(1, &format[i], 1);
 				i++;
 			}
 		}
