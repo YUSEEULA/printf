@@ -22,9 +22,5 @@ int print_s(va_list args);
 int print_d(va_list args);
 int print_i(va_list args);
 int print_percent(va_list args);
-int print_u(unsigned int num);
-int print_o(unsigned int num);
-int print_x(unsigned int num);
-int print_X(unsigned int num);
 int (*get_function(char x))(va_list args);
 #endif
