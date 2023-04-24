@@ -26,7 +26,7 @@ int print_u(unsigned int num)
 			return (-1);
 	}
 
-	return (0);
+	return (digits);
 }
 
 /**
@@ -52,7 +52,7 @@ int print_o(unsigned int num)
 			return (-1);
 	}
 
-	return (0);
+	return (digits);
 }
 
 /**
@@ -78,7 +78,7 @@ int print_x(unsigned int num)
 			return (-1);
 	}
 
-	return (0);
+	return (digits);
 }
 
 /**
@@ -104,5 +104,5 @@ int print_X(unsigned int num)
 			return (-1);
 	}
 
-	return (0);
+	return (digits);
 }
