@@ -12,20 +12,21 @@
 int print_u(unsigned int num)
 {
 	int digits = 0;
-	char buffer[10];
+	char buffer[20];
 
 	do {
 		buffer[digits++] = (num % 10) + '0';
 		num = num / 10;
 	} while (num != 0);
 
-	while (digits-- > 0)
+	while (digits > 0)
 	{
-		if (write(1, &buffer[digits], 1) == -1)
+		digits--;
+		if (write(1, &buffer[digits], 1))
 			return (-1);
 	}
 
-	return (digits + 1);
+	return (0);
 }
 
 /**
@@ -44,13 +45,14 @@ int print_o(unsigned int num)
 		num = num / 8;
 	} while (num != 0);
 
-	while (digits-- > 0)
+	while (digits > 0)
 	{
+		digits--;
 		if (write(1, &buffer[digits], 1) == -1)
 			return (-1);
 	}
 
-	return (digits + 1);
+	return (0);
 }
 
 /**
@@ -69,13 +71,14 @@ int print_x(unsigned int num)
 		num = num / 16;
 	} while (num != 0);
 
-	while (digits-- > 0)
+	while (digits > 0)
 	{
+		digits--;
 		if (write(1, &buffer[digits], 1) == -1)
 			return (-1);
 	}
 
-	return (digits + 1);
+	return (0);
 }
 
 /**
@@ -94,11 +97,12 @@ int print_X(unsigned int num)
 		num = num / 16;
 	} while (num != 0);
 
-	while (digits-- > 0)
+	while (digits > 0)
 	{
+		digits--;
 		if (write(1, &buffer[digits], 1) == -1)
 			return (-1);
 	}
 
-	return (digits + 1);
+	return (0);
 }
